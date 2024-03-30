@@ -23,18 +23,19 @@ const nextConfig = {
       // We're in the browser build, so we can safely exclude the sharp module
       config.externals.push('sharp')
     }
+
     // audio support
     config.module.rules.push({
-      test: /\.(ogg|mp3|wav|mpe?g)$/i,
+      test: /\.(ogg|mp3|wav|mpe?g|glb|hdr|fbx)$/i,
       exclude: config.exclude,
       use: [
         {
-          loader: require.resolve('url-loader'),
+          loader: require.resolve('file-loader'),
           options: {
             limit: config.inlineImageLimit,
             fallback: require.resolve('file-loader'),
-            publicPath: `${config.assetPrefix}/_next/static/images/`,
-            outputPath: `${isServer ? '../' : ''}static/images/`,
+            publicPath: `${config.assetPrefix || ''}/_next/static/images/`,
+            outputPath: `${isServer ? '../' : '../'}static/images/`,
             name: '[name]-[hash].[ext]',
             esModule: config.esModule || false,
           },

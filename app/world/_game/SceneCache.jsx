@@ -1,0 +1,1 @@
+export const SceneCache = new Map()

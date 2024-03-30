@@ -1,6 +1,5 @@
-'use client'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faBox, faHandsPraying, faInbox } from '@fortawesome/free-solid-svg-icons'
+import { faArrowsV, faAsterisk, faBible, faBookBible, faBox, faDove, faFireFlameSimple, faGear, faHandsPraying, faHeart, faInbox, faUser } from '@fortawesome/free-solid-svg-icons'
 
 export default function Page() {
     return <>
@@ -8,7 +7,7 @@ export default function Page() {
             <div className="flex flex-col justify-between items-center flex-none w-16 bg-gray-200">
                 <div className="flex flex-col w-full items-center pt-1">
                     <a className="relative h-16 w-16 inline-flex justify-center items-center">
-                        <FontAwesomeIcon className="h-8 w-8" icon={faInbox}></FontAwesomeIcon>
+                        <FontAwesomeIcon className="h-8 w-8" icon={faBible}></FontAwesomeIcon>
                         <div className="absolute top-3 right-3 bg-red-500 w-4 h-4 text-xs text-white rounded-full text-center">
                             5
                         </div>
@@ -19,20 +18,24 @@ export default function Page() {
                             5
                         </div>
                     </a>
-
-
-                </div>
-                <div className="flex flex-col space-y-4 pb-5">
-                    <a>
-                        <div className="rounded-full bg-gray-400 w-8 h-8" />
+                    <a className="relative h-16 w-16 inline-flex justify-center items-center">
+                        <FontAwesomeIcon className="h-8 w-8" icon={faDove}></FontAwesomeIcon>
+                        {/* <div className="absolute top-3 right-3 bg-red-500 w-4 h-4 text-xs text-white rounded-full text-center">
+                            5
+                        </div> */}
                     </a>
-                    <a>
-                        <div className="rounded-full bg-gray-400 w-8 h-8" />
+                </div>
+                <div className="flex flex-col pb-2">
+                    <a className="relative h-16 w-16 inline-flex justify-center items-center">
+                        <FontAwesomeIcon className="h-8 w-8" icon={faGear}></FontAwesomeIcon>
+                        {/* <div className="absolute top-3 right-3 bg-red-500 w-4 h-4 text-xs text-white rounded-full text-center">
+                            5
+                        </div> */}
                     </a>
                 </div>
             </div>
             <div className="w-64 flex-none bg-gray-100 p-4 flex flex-col space-y-4">
-                <div className="flex flex-row justify-between items-center mb-6">
+                <div className="flex flex-row justify-between items-center">
                     <h1 className="font-semibold text-2xl">Inbox</h1>
                     <svg
                         className="flex-none w-4 h-4"
@@ -61,7 +64,7 @@ export default function Page() {
             </div>
             <div className="flex flex-row flex-auto bg-white rounded-tl-xl border-l shadow-xl">
                 <div className="flex flex-col w-1/5">
-                    <div className="flex-none h-24 bg-red-200">Top</div>
+                    <div className="flex-none h-20 border-b">Top</div>
                     <div className="flex-auto overflow-y-auto">
                         <a className="block border-b">
                             <div className="border-l-2 border-transparent hover:bg-gray-100 p-3 space-y-4">
