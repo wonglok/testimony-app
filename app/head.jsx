@@ -1,4 +1,4 @@
-const title = 'Testimony Database'
+const title = 'Thank you Jesus Database of Testimonies and Praises'
 const url = 'https://thankyou.bible'
 const description = 'Praise the LORD Amen!'
 const author = 'Lok Wong'
