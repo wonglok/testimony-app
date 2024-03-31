@@ -15,7 +15,6 @@ export function SceneContent() {
 
     let scene = useThree(r => r.scene)
     let events = useThree(r => r.events)
-
     let glb = useGLTF(sceneURL)
     let dom = events.connected
     let [run, setRun] = useState({})
@@ -60,8 +59,8 @@ export function SceneContent() {
     }, [scene, dom])
 
     useFrame(({ camera: systemCamera }) => {
-        if (typeof run.render === 'function') {
-            run.render()
+        if (typeof run.loop === 'function') {
+            run.loop()
             run.camera
 
             systemCamera.position.lerp(run.camera.position, 1.0)

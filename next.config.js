@@ -12,6 +12,9 @@ const withPWA = require('@ducanh2912/next-pwa').default({
 })
 
 const nextConfig = {
+  // images: {
+  //   unoptimized: true,
+  // },
   // uncomment the following snippet if using styled components
   // compiler: {
   //   styledComponents: true,
@@ -21,8 +24,27 @@ const nextConfig = {
   webpack(config, { isServer }) {
     if (!isServer) {
       // We're in the browser build, so we can safely exclude the sharp module
-      config.externals.push('sharp')
+      // config.externals.push('sharp')
     }
+    // let removal = []
+    // console.log(config.module.rules.map(r => r).map(r => {
+    //   let res = false
+    //   if (r?.test?.match) {
+    //     res = 'happy.webp'.match(r?.test)
+
+    //     if (res) {
+    //       removal.push(r)
+    //     }
+    //   }
+    //   return {
+    //     r: r,
+    //     res,
+    //   }
+    // }))
+
+    // removal.forEach(r => {
+    //   config.module.rules.splice(config.module.rules.indexOf(r), 1)
+    // })
 
     // audio support
     config.module.rules.push({

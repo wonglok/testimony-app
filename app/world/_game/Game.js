@@ -2,6 +2,7 @@ import { Object3D } from "three";
 import * as THREE from 'three';
 import { RoundedBoxGeometry } from 'three/examples/jsm/geometries/RoundedBoxGeometry.js';
 import { sceneToCollider } from "./sceneToCollider";
+import { AvatarSelf } from "./AvatarSelf";
 
 
 
@@ -24,6 +25,7 @@ export class Game extends Object3D {
         };
 
         let self = this
+
 
         this.camera = camera
 
@@ -50,6 +52,7 @@ export class Game extends Object3D {
             new RoundedBoxGeometry(1.0, 2.0, 1.0, 10, 0.5),
             new THREE.MeshStandardMaterial()
         );
+        this.player = player
         player.geometry.translate(0, - 0.5, 0);
         player.capsuleInfo = {
             radius: 0.5,
@@ -59,7 +62,7 @@ export class Game extends Object3D {
         player.receiveShadow = true;
         player.material.shadowSide = 2;
 
-        self.add(player);
+        // self.add(player);
         reset();
 
         controls.rotateSpeed = -1
@@ -121,7 +124,6 @@ export class Game extends Object3D {
             return () => {
                 window.removeEventListener('keydown', hhkeyDown);
                 window.removeEventListener('keyup', hhKeyUp);
-
             }
         }
 
@@ -169,6 +171,7 @@ export class Game extends Object3D {
                 player.position.addScaledVector(tempVector, params.playerSpeed * delta);
 
             }
+            player.rotation.y = angle;
 
             player.updateMatrixWorld();
 
@@ -259,8 +262,9 @@ export class Game extends Object3D {
 
         }
 
-        let rAFID = 0
-        function render() {
+        let loops = []
+        this.loop = () => {
+
 
             // stats.update();
 
@@ -293,11 +297,10 @@ export class Game extends Object3D {
 
             }
 
-            // TODO: limit the camera movement based on the collider
-            // raycast in direction of camera and move it if it's further than the closest point
-
             controls.update();
+
             let isNear = camera.position.distanceTo(player.position) >= 1.5
+
             player.visible = isNear
 
             if (isNear) {
@@ -306,9 +309,11 @@ export class Game extends Object3D {
                 controls.maxPolarAngle = THREE.MathUtils.lerp(controls.maxPolarAngle, Math.PI, 0.1)
             }
 
-            // renderer.render(scene, camera);
+
+            loops.forEach(l => {
+                return l()
+            })
         }
-        this.render = render
 
         keyboard();
 
@@ -327,7 +332,14 @@ export class Game extends Object3D {
 
         params.reset = reset
 
+        let avatar = new AvatarSelf({
+            parent: this,
+            onLoop: (v) => {
+                loops.push(v)
+            }
+        })
 
+        this.add(avatar)
 
 
     }
