@@ -2,7 +2,7 @@
 import path from 'path'
 export const AvatarMotion = []
 
-function loadSeries({ gender, category, webp, fbx }) {
+function importSeries({ gender, category, webp, fbx }) {
     function importAllFBX(r, wp) {
         r.keys().forEach((key) => {
             let obj = {
@@ -33,50 +33,50 @@ function loadSeries({ gender, category, webp, fbx }) {
     importAllFBX(fbx, webp);
 }
 
-loadSeries({
+importSeries({
     category: 'dance',
     gender: 'masculine',
     fbx: require.context('./rpm-avatar-motion/masculine/fbx/dance', false, /\.fbx$/),
     webp: require.context('./rpm-avatar-motion/masculine/webp/dance', false, /\.webp$/)
 });
-loadSeries({
+importSeries({
     category: 'expression',
     gender: 'masculine',
     fbx: require.context('./rpm-avatar-motion/masculine/fbx/expression', false, /\.fbx$/),
     webp: require.context('./rpm-avatar-motion/masculine/webp/expression', false, /\.webp$/)
 });
-loadSeries({
+importSeries({
     category: 'idle',
     gender: 'masculine',
     fbx: require.context('./rpm-avatar-motion/masculine/fbx/idle', false, /\.fbx$/),
     webp: require.context('./rpm-avatar-motion/masculine/webp/idle', false, /\.webp$/)
 });
-loadSeries({
+importSeries({
     category: 'locomotion',
     gender: 'masculine',
     fbx: require.context('./rpm-avatar-motion/masculine/fbx/locomotion', false, /\.fbx$/),
     webp: require.context('./rpm-avatar-motion/masculine/webp/locomotion', false, /\.webp$/)
 });
 
-loadSeries({
+importSeries({
     category: 'dance',
     gender: 'feminine',
     fbx: require.context('./rpm-avatar-motion/feminine/fbx/dance', false, /\.fbx$/),
     webp: require.context('./rpm-avatar-motion/feminine/webp/dance', false, /\.webp$/)
 });
-loadSeries({
+importSeries({
     category: 'expression',
     gender: 'feminine',
     fbx: require.context('./rpm-avatar-motion/feminine/fbx/expression', false, /\.fbx$/),
     webp: require.context('./rpm-avatar-motion/feminine/webp/expression', false, /\.webp$/)
 });
-loadSeries({
+importSeries({
     category: 'idle',
     gender: 'feminine',
     fbx: require.context('./rpm-avatar-motion/feminine/fbx/idle', false, /\.fbx$/),
     webp: require.context('./rpm-avatar-motion/feminine/webp/idle', false, /\.webp$/)
 });
-loadSeries({
+importSeries({
     category: 'locomotion',
     gender: 'feminine',
     fbx: require.context('./rpm-avatar-motion/feminine/fbx/locomotion', false, /\.fbx$/),

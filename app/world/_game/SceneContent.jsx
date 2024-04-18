@@ -61,7 +61,7 @@ export function SceneContent() {
     useFrame(({ camera: systemCamera }) => {
         if (typeof run.loop === 'function') {
             run.loop()
-            run.camera
+            // run.camera
 
             systemCamera.position.lerp(run.camera.position, 1.0)
             systemCamera.quaternion.slerp(run.camera.quaternion, 1.0)
